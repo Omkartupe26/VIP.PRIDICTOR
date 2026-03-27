@@ -2,8 +2,8 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import sqlite3
 import random
-
-BOT_TOKEN = "8759538783:AAEXFiIDpNa55APdze0r_6Wxg2a8_eQ3ae0"
+import os
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # DATABASE
 conn = sqlite3.connect("game_history.db", check_same_thread=False)
