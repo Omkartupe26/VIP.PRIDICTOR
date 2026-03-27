@@ -1,9 +1,9 @@
-name: 24/7 Bot
+name: 24/7 Prediction Bot
 on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */6 * * *' # Restarts every 6 hours
 
 jobs:
   run-bot:
@@ -13,7 +13,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - name: Install
-        run: pip install pyTelegramBotAPI 
-      - name: Run
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run Bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: python bot.py
